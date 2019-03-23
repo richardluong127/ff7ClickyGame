@@ -19,6 +19,11 @@ import React from "react";
 //     };
 // };
 
+  // handleCardClick() {
+  //   const image = this.state.image
+  //     this.setState.image = image.id[Math.floor(Math.random() * 12)];}
+
+
 function Card(props) {
   return (
     <div
@@ -30,7 +35,7 @@ function Card(props) {
       onClick={props.handleCardClick}
     >
       {props.image.map(item => (
-        <img key={item.id} className="card-item" alt="name" src={item.img}></img>
+        <img key={item.id} id={item.id} className="card-item" alt="name" src={item.img}></img>
       ))}
     </div>
   );

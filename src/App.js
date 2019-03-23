@@ -36,40 +36,39 @@ class ClickyGame extends Component {
   state = {
     score: 0,
     topScore: 0,
-    image
+    image: image,
+    clickedImage: []
   };
 
-  constructor(props) {
-    super(props);
-    this.handleCardClick = this.handleCardClick.bind(this);
-  }
-
-  handleCardClick(e) {
-    function shuffle() {
-      var m = image.length,
-        t,
-        i;
-      while (m) {
-        i = Math.floor(Math.random() * m--);
-        t = image[m];
-        image[m] = image[i];
-        image[i] = t;
-      }
+  //Having trouble getting the clicked image to be placed into the clickedImage array.  If I use a variable or event, it shows up as "null".
+  //When I put 0 into line 47 and 52, it will score the game and place the first object into the clickedImage array.
+  //When the object at 0 shows up twice, that's when the game will reset.
+  //This is where I am currently in the assignment.
+  handleCardClick = e => {
+    const shuffled = this.shuffle(image);
+    if (this.state.clickedImage.includes(this.state.image[0])) {
+      this.setState({ score: 0, clickedImage: [] });
+    } else {
+      this.setState({
+        image: shuffled,
+        clickedImage: this.state.clickedImage.concat(this.state.image[0]),
+        score: this.state.score + 1
+      });
     }
-    shuffle({ image });
-    let { image: newImage, value } = e.target;
-    this.setState({
-      [newImage]: value
-    });
-  }
+  };
 
-  // WinOrLose = () => {
-  //   for (var i=0; i<image.length; i++)
-  //   if (i !== image[i]) {
-  //     console.log("hello world");
-  //   };
-  // };
-
+  shuffle = imageArray => {
+    var m = imageArray.length,
+      t,
+      i;
+    while (m) {
+      i = Math.floor(Math.random() * m--);
+      t = imageArray[m];
+      imageArray[m] = imageArray[i];
+      imageArray[i] = t;
+    }
+    return imageArray;
+  };
   render() {
     return (
       <div>
