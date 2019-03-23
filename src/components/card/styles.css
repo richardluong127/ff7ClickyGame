@@ -1,0 +1,23 @@
+/* img{
+    height: 240px;
+    width: 240px;
+}
+
+
+.card {
+    background-size: cover;
+    background-position: 50%;
+    height: 240px;
+    width: 240px;
+    margin: 8px 25px;
+    border: 5px solid #6d7086;
+    border-radius: 3px;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+    cursor: pointer;
+}
+
+.card-item {
+
+    display: inline-block;
+  vertical-align: baseline;
+} */
