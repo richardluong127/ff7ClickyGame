@@ -39,14 +39,12 @@ class ClickyGame extends Component {
     image
   };
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     board: Array(12).fill({ image })
-  //   };
-  // }
+  constructor(props) {
+    super(props);
+    this.handleCardClick = this.handleCardClick.bind(this);
+  }
 
-  handleCardClick() {
+  handleCardClick(e) {
     function shuffle() {
       var m = image.length,
         t,
@@ -59,36 +57,30 @@ class ClickyGame extends Component {
       }
     }
     shuffle({ image });
-    console.log(image);
-
-    // let newBoard = this.state.board;
-    // this.setState({
-    //   board: newBoard[index]
-    // });
+    let { image: newImage, value } = e.target;
+    this.setState({
+      [newImage]: value
+    });
   }
 
-  // const newImage = this.state.image.push(image);
-  // this.setState({newImage})
-  // }
-
-  // this.setState({
-  //   image: newImage
-  // });
-  // console.log(this.state.image);
-  // }
+  // WinOrLose = () => {
+  //   for (var i=0; i<image.length; i++)
+  //   if (i !== image[i]) {
+  //     console.log("hello world");
+  //   };
+  // };
 
   render() {
-    // const Image = this.state.board.map(
-    //   (newImage) =>
-    //   <Card image={image} handleCardClick={this.handleCardClick}>{newImage}</Card>
-    // )
     return (
       <div>
         <h1 className="text-center">FF7 Clicky Game</h1>
         <h3 className="text-center">Score: {this.state.score}</h3>
         <h3 className="text-center">Top Score: {this.state.score}</h3>
         <Container className="container">
-          <Card image={image} handleCardClick={this.handleCardClick} />
+          <Card
+            image={this.state.image}
+            handleCardClick={this.handleCardClick}
+          />
         </Container>
       </div>
     );
