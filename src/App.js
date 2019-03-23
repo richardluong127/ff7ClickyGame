@@ -35,14 +35,53 @@ const image = [
 class ClickyGame extends Component {
   state = {
     score: 0,
-    topScore: 0
+    topScore: 0,
+    image
   };
 
-  handleCardClick = event => {
-    console.log(event);
-  };
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     board: Array(12).fill({ image })
+  //   };
+  // }
+
+  handleCardClick() {
+    function shuffle() {
+      var m = image.length,
+        t,
+        i;
+      while (m) {
+        i = Math.floor(Math.random() * m--);
+        t = image[m];
+        image[m] = image[i];
+        image[i] = t;
+      }
+    }
+    shuffle({ image });
+    console.log(image);
+
+    // let newBoard = this.state.board;
+    // this.setState({
+    //   board: newBoard[index]
+    // });
+  }
+
+  // const newImage = this.state.image.push(image);
+  // this.setState({newImage})
+  // }
+
+  // this.setState({
+  //   image: newImage
+  // });
+  // console.log(this.state.image);
+  // }
 
   render() {
+    // const Image = this.state.board.map(
+    //   (newImage) =>
+    //   <Card image={image} handleCardClick={this.handleCardClick}>{newImage}</Card>
+    // )
     return (
       <div>
         <h1 className="text-center">FF7 Clicky Game</h1>
